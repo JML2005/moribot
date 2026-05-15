@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #0f172a;
+    background: linear-gradient(to bottom right, #0f172a, #1e293b);
     font-family: Arial, sans-serif;
 }
 
@@ -10,33 +10,84 @@ body {
     height: 600px;
     background-color: #1e293b;
     margin: 40px auto;
-    border-radius: 15px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .chat-header {
-    background-color: #2563eb;
+    background: linear-gradient(to right, #2563eb, #1d4ed8);
     color: white;
     padding: 20px;
     font-size: 24px;
     font-weight: bold;
     text-align: center;
+    position: relative;
 }
+
+/* Logo */
+
+.logo-area {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 32px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+/* Chat */
 
 .chat-box {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
+    scroll-behavior: smooth;
 }
+
+/* Scrollbar personalizada */
+
+.chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background: #1e293b;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+}
+
+/* Mensajes */
 
 .message {
     padding: 12px;
     margin-bottom: 15px;
-    border-radius: 10px;
+    border-radius: 12px;
     max-width: 80%;
+    animation: fadeIn 0.3s ease;
+    transition: transform 0.2s ease;
+}
+
+.message:hover {
+    transform: scale(1.02);
 }
 
 .bot-message {
@@ -44,31 +95,86 @@ body {
     color: white;
 }
 
+/* Animación aparición */
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+/* Input */
+
 .input-area {
     display: flex;
     padding: 15px;
     background-color: #0f172a;
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 input {
     flex: 1;
     padding: 12px;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     outline: none;
+    background-color: #334155;
+    color: white;
+    font-size: 15px;
 }
+
+input::placeholder {
+    color: #cbd5e1;
+}
+
+/* Botones */
 
 button {
     margin-left: 10px;
     padding: 12px 20px;
     border: none;
-    background-color: #2563eb;
+    background: linear-gradient(to right, #2563eb, #1d4ed8);
     color: white;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: bold;
+    transition: all 0.2s ease;
 }
 
 button:hover {
-    background-color: #1d4ed8;
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Papelera */
+
+.clear-button {
+
+    position: absolute;
+
+    right: 15px;
+    top: 15px;
+
+    background: transparent;
+
+    border: none;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+.clear-button:hover {
+    transform: scale(1.2);
 }
